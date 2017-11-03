@@ -6,25 +6,73 @@
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>reinf-batch</module>
+	</modules>
+
 	<properties>
+		<!-- <cdi.version>2.0</cdi.version> -->
+		<ejb.version>3.0</ejb.version>
 		<java.version>1.8</java.version>
+		<javaee.version>6.0</javaee.version>
+		<javax.inject.version>1</javax.inject.version>
+		<junit.version>4.12</junit.version>
+		<hibernate.entityanager.version>5.2.10.Final</hibernate.entityanager.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.version>3.6.1</maven.compiler.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<reinf.batch.version>0.0.1</reinf.batch.version>
 	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<encoding>${project.reporting.outputEncoding}</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	
-	<modules>
-		<module>reinf-batch</module>
-	</modules>
-	
+
+	<repositories>
+		<repository>
+			<id>Central Maven 2 Repository</id>
+			<url>http://central.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>Maven 2 Repository - Central</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>JBoss Public Maven 2 Repository - Nexus Content</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/public-jboss/</url>
+		</repository>
+		<repository>
+			<id>JBoss Public Maven 2 Repository</id>
+			<url>https://repository.jboss.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>Central Maven 2 Repository - Nexus Content</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/central/</url>
+		</repository>
+		<repository>
+			<id>Java.net Maven 2 Repository - Nexus Content</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/java.net-m2/</url>
+		</repository>
+		<repository>
+			<id>PrimeFaces Repository</id>
+			<url>http://repository.primefaces.org</url>
+		</repository>
+		<repository>
+			<id>SpringSource Repository</id>
+			<url>http://repo.springsource.org/release</url>
+		</repository>
+	</repositories>
+
 </project>
