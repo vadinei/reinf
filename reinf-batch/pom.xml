@@ -2,11 +2,31 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>br.com.vadinei.bnb</groupId>
+		<groupId>br.com.vadinei</groupId>
 		<artifactId>reinf</artifactId>
 		<version>0.0.1</version>
 	</parent>
 	<artifactId>reinf-batch</artifactId>
+	<packaging>ejb</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>${maven.ejb.version}</version>
+				<configuration>
+					<ejbVersion>${ejb.version}</ejbVersion>
+					<generateClient>true</generateClient>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 
@@ -33,7 +53,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.ejb</groupId>
-			<artifactId>ejb-api</artifactId>
+			<artifactId>javax.ejb-api</artifactId>
 			<version>${ejb.version}</version>
 			<scope>provided</scope>
 		</dependency>
