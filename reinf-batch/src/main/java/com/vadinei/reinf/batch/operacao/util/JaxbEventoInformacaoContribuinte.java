@@ -37,7 +37,7 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	}
 
 	@Override
-	public void setup() {
+	public void prepararGerarXML() {
 
 		// TODO: Implementação da passagem dos valores do eventoTo para jaxbEvento.
 

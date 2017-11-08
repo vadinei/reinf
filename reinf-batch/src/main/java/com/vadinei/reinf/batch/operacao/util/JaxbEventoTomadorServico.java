@@ -20,16 +20,15 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 
 	private final Reinf.EvtServTom jaxbEvento;
 
-
 	/**
-	 * @param eventoTO
-	 * @param jaxbEvento
+	 * @param eventoTomadorServicoTO
 	 * @param jaxbObjectFactory
 	 */
-	public JaxbEventoTomadorServico(final EventoTomadorServicoTO eventoTO, final ObjectFactory jaxbObjectFactory) {
+	public JaxbEventoTomadorServico(final EventoTomadorServicoTO eventoTomadorServicoTO,
+			final ObjectFactory jaxbObjectFactory) {
 		super();
 
-		this.eventoTO = eventoTO != null ? eventoTO : new EventoTomadorServicoTO();
+		eventoTO = eventoTomadorServicoTO != null ? eventoTomadorServicoTO : new EventoTomadorServicoTO();
 
 		final ObjectFactory jaxbFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
 		final EvtServTom jaxbEvento = jaxbFactory.createReinfEvtServTom();
@@ -37,7 +36,7 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 	}
 
 	@Override
-	public void setup() {
+	public void prepararGerarXML() {
 
 		// TODO: Implementação da passagem dos valores do eventoTo para jaxbEvento.
 

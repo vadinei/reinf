@@ -72,19 +72,19 @@ public abstract class JaxbEventoTemplate implements Serializable {
 
 	private String senha;
 
-	public abstract void setup();
+	public abstract void prepararGerarXML();
 
 	public abstract EventoTO getEventoTO();
 
 	public abstract Object getJaxbEvento();
 
-	public final void processar() {
+	public final void gerarXML() {
 
 		// TODO: Inicializar os dados do certificado e da senha.
 		caminhoCertificado = ConstanteUtil.STRING_VAZIA;
 		senha = ConstanteUtil.STRING_VAZIA;
 
-		setup();
+		prepararGerarXML();
 
 		final EventoTO eventoTO = getEventoTO();
 		final Object jaxbEvento = getJaxbEvento();
