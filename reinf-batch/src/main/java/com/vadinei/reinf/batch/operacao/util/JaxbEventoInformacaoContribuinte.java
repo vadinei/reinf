@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import com.vadinei.reinf.batch.operacao.to.EventoInformacaoContribuinteTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTO;
+import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoTO;
 import com.vadinei.reinf.batch.schema.evento.informacaocontribuinte.ObjectFactory;
 import com.vadinei.reinf.batch.schema.evento.informacaocontribuinte.Reinf;
-import com.vadinei.reinf.batch.schema.evento.informacaocontribuinte.Reinf.EvtInfoContri;
 
 /**
  * @author José Vádinei Soares - vadinei@hotmail.com
@@ -20,8 +20,6 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 
 	private final Reinf.EvtInfoContri jaxbEvento;
 
-	private final ObjectFactory jaxbObjectFactory;
-
 	/**
 	 * @param eventoTO
 	 * @param jaxbEvento
@@ -31,10 +29,10 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 			final ObjectFactory jaxbObjectFactory) {
 		super();
 
-		this.eventoTO = eventoTO != null ? eventoTO : new EventoInformacaoContribuinteTO();
-		this.jaxbObjectFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
+		this.eventoTO = eventoTO != null ? eventoTO : new EventoTomadorServicoTO();
 
-		final EvtInfoContri jaxbEvento = jaxbObjectFactory.createReinfEvtInfoContri();
+		final ObjectFactory jaxbFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
+		final Reinf.EvtInfoContri jaxbEvento = jaxbFactory.createReinfEvtInfoContri();
 		this.jaxbEvento = jaxbEvento;
 	}
 
@@ -53,11 +51,6 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	@Override
 	public Object getJaxbEvento() {
 		return jaxbEvento;
-	}
-
-	@Override
-	public Object getJaxbObjectFactory() {
-		return jaxbObjectFactory;
 	}
 
 }

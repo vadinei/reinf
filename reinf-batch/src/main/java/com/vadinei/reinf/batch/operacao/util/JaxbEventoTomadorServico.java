@@ -20,7 +20,6 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 
 	private final Reinf.EvtServTom jaxbEvento;
 
-	private final ObjectFactory jaxbObjectFactory;
 
 	/**
 	 * @param eventoTO
@@ -31,9 +30,9 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 		super();
 
 		this.eventoTO = eventoTO != null ? eventoTO : new EventoTomadorServicoTO();
-		this.jaxbObjectFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
 
-		final EvtServTom jaxbEvento = jaxbObjectFactory.createReinfEvtServTom();
+		final ObjectFactory jaxbFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
+		final EvtServTom jaxbEvento = jaxbFactory.createReinfEvtServTom();
 		this.jaxbEvento = jaxbEvento;
 	}
 
@@ -52,11 +51,6 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 	@Override
 	public Object getJaxbEvento() {
 		return jaxbEvento;
-	}
-
-	@Override
-	public Object getJaxbObjectFactory() {
-		return jaxbObjectFactory;
 	}
 
 }

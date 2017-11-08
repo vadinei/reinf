@@ -78,22 +78,19 @@ public abstract class JaxbEventoTemplate implements Serializable {
 
 	public abstract Object getJaxbEvento();
 
-	public abstract Object getJaxbObjectFactory();
-
 	public final void processar() {
 
-		// TODO: Configurar o caminho do certificado e a senha.
+		// TODO: Inicializar os dados do certificado e da senha.
 		caminhoCertificado = ConstanteUtil.STRING_VAZIA;
 		senha = ConstanteUtil.STRING_VAZIA;
 
 		setup();
 
 		final EventoTO eventoTO = getEventoTO();
-		final Object jaxbEvento = getJaxbObjectFactory();
-		final Object jaxbObjectFactory = getJaxbObjectFactory();
+		final Object jaxbEvento = getJaxbEvento();
 
-		if ((eventoTO == null) || (jaxbEvento == null) || (jaxbObjectFactory == null)) {
-			// Deverá ser efetuado o devido tratamento para este fluxo.
+		if ((eventoTO == null) || (jaxbEvento == null)) {
+			// TODO: Efetuar o devido tratamento para este fluxo.
 			return;
 		}
 
