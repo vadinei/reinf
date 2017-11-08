@@ -8,11 +8,8 @@ import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.jms.Message;
 import javax.jms.MessageListener;
-import javax.jms.MessageProducer;
 import javax.jms.Queue;
-import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueSession;
 
 /**
  * @author José Vádinei Soares - vadinei@hotmail.com
@@ -30,11 +27,11 @@ public class ProcessaEventoTomadorServicoMDB implements MessageListener, Seriali
 	@Resource
 	private QueueConnectionFactory connectionFactory;
 
-	private QueueConnection connection;
-
-	private QueueSession session;
-
-	private MessageProducer messageProducer;
+	// private QueueConnection connection;
+	//
+	// private QueueSession session;
+	//
+	// private MessageProducer messageProducer;
 
 	@EJB
 	private ProcessaEventoTomadorServicoSFLocal processaEventoTomadorServicoSF;

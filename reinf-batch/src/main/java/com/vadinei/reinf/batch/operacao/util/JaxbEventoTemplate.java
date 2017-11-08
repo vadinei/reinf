@@ -82,7 +82,7 @@ public abstract class JaxbEventoTemplate implements Serializable {
 
 	public final void processar() {
 
-		// Configurar o caminho do certificado e a senha
+		// TODO: Configurar o caminho do certificado e a senha.
 		caminhoCertificado = ConstanteUtil.STRING_VAZIA;
 		senha = ConstanteUtil.STRING_VAZIA;
 

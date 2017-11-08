@@ -8,7 +8,7 @@ import java.util.List;
  * @author José Vádinei Soares - vadinei@hotmail.com
  *
  */
-public class EventoTO implements Serializable {
+public abstract class EventoTO implements Serializable {
 
 	private static final long serialVersionUID = 5224403746330614078L;
 

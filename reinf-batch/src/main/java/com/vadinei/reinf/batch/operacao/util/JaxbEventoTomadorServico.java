@@ -3,6 +3,7 @@ package com.vadinei.reinf.batch.operacao.util;
 import java.io.Serializable;
 
 import com.vadinei.reinf.batch.operacao.to.EventoTO;
+import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoTO;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.ObjectFactory;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf.EvtServTom;
@@ -26,10 +27,10 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 	 * @param jaxbEvento
 	 * @param jaxbObjectFactory
 	 */
-	public JaxbEventoTomadorServico(final EventoTO eventoTO, final ObjectFactory jaxbObjectFactory) {
+	public JaxbEventoTomadorServico(final EventoTomadorServicoTO eventoTO, final ObjectFactory jaxbObjectFactory) {
 		super();
 
-		this.eventoTO = eventoTO != null ? eventoTO : new EventoTO();
+		this.eventoTO = eventoTO != null ? eventoTO : new EventoTomadorServicoTO();
 		this.jaxbObjectFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
 
 		final EvtServTom jaxbEvento = jaxbObjectFactory.createReinfEvtServTom();
@@ -39,7 +40,7 @@ public class JaxbEventoTomadorServico extends JaxbEventoTemplate implements Seri
 	@Override
 	public void setup() {
 
-		// Implementação da passagem dos valores do eventoTo para jaxbEvento.
+		// TODO: Implementação da passagem dos valores do eventoTo para jaxbEvento.
 
 	}
 

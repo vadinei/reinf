@@ -2,6 +2,7 @@ package com.vadinei.reinf.batch.operacao.util;
 
 import java.io.Serializable;
 
+import com.vadinei.reinf.batch.operacao.to.EventoInformacaoContribuinteTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTO;
 import com.vadinei.reinf.batch.schema.evento.informacaocontribuinte.ObjectFactory;
 import com.vadinei.reinf.batch.schema.evento.informacaocontribuinte.Reinf;
@@ -26,10 +27,11 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	 * @param jaxbEvento
 	 * @param jaxbObjectFactory
 	 */
-	public JaxbEventoInformacaoContribuinte(final EventoTO eventoTO, final ObjectFactory jaxbObjectFactory) {
+	public JaxbEventoInformacaoContribuinte(final EventoInformacaoContribuinteTO eventoTO,
+			final ObjectFactory jaxbObjectFactory) {
 		super();
 
-		this.eventoTO = eventoTO != null ? eventoTO : new EventoTO();
+		this.eventoTO = eventoTO != null ? eventoTO : new EventoInformacaoContribuinteTO();
 		this.jaxbObjectFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
 
 		final EvtInfoContri jaxbEvento = jaxbObjectFactory.createReinfEvtInfoContri();
@@ -39,7 +41,7 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	@Override
 	public void setup() {
 
-		// Implementação da passagem dos valores do eventoTo para jaxbEvento.
+		// TODO: Implementação da passagem dos valores do eventoTo para jaxbEvento.
 
 	}
 
