@@ -1,6 +1,7 @@
 package com.vadinei.reinf.batch.operacao.to;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author José Vádinei Soares - vadinei@hotmail.com
@@ -10,11 +11,11 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 
 	private static final long serialVersionUID = -6619659087467717708L;
 
-	private Short tipoEvento; // indRetif
+	private Short indicativoRetificacao; // indRetif
 
 	private String numeroRecibo; // nrRecibo
 
-	private String periodoApuracao; // perApur: AAAA-MM
+	private Date periodoApuracao; // perApur: AAAA-MM
 
 	private Short tipoAmbiente; // tpAmb
 
@@ -23,19 +24,19 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 	private String versaoProcessoEmissao; // verProc
 
 	/**
-	 * @param tipoEvento
+	 * @param indicativoRetificacao
 	 * @param numeroRecibo
 	 * @param periodoApuracao
 	 * @param tipoAmbiente
 	 * @param processoEmissao
 	 * @param versaoProcessoEmissao
 	 */
-	public EventoTomadorServicoIdentificacaoEventoTO(final Short tipoEvento, final String numeroRecibo,
-			final String periodoApuracao, final Short tipoAmbiente, final Short processoEmissao,
+	public EventoTomadorServicoIdentificacaoEventoTO(final Short indicativoRetificacao, final String numeroRecibo,
+			final Date periodoApuracao, final Short tipoAmbiente, final Short processoEmissao,
 			final String versaoProcessoEmissao) {
 		super();
 
-		this.tipoEvento = tipoEvento;
+		this.indicativoRetificacao = indicativoRetificacao;
 		this.numeroRecibo = numeroRecibo;
 		this.periodoApuracao = periodoApuracao;
 		this.tipoAmbiente = tipoAmbiente;
@@ -44,18 +45,18 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 	}
 
 	/**
-	 * @return O atributo tipoEvento
+	 * @return O atributo indicativoRetificacao
 	 */
-	public Short getTipoEvento() {
-		return tipoEvento;
+	public Short getIndicativoRetificacao() {
+		return indicativoRetificacao;
 	}
 
 	/**
-	 * @param tipoEvento
-	 *            define o atributo tipoEvento
+	 * @param indicativoRetificacao
+	 *            define o atributo indicativoRetificacao
 	 */
-	public void setTipoEvento(final Short tipoEvento) {
-		this.tipoEvento = tipoEvento;
+	public void setIndicativoRetificacao(final Short indicativoRetificacao) {
+		this.indicativoRetificacao = indicativoRetificacao;
 	}
 
 	/**
@@ -76,7 +77,7 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 	/**
 	 * @return O atributo periodoApuracao
 	 */
-	public String getPeriodoApuracao() {
+	public Date getPeriodoApuracao() {
 		return periodoApuracao;
 	}
 
@@ -84,7 +85,7 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 	 * @param periodoApuracao
 	 *            define o atributo periodoApuracao
 	 */
-	public void setPeriodoApuracao(final String periodoApuracao) {
+	public void setPeriodoApuracao(final Date periodoApuracao) {
 		this.periodoApuracao = periodoApuracao;
 	}
 
@@ -153,7 +154,7 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 		result = (prime * result) + ((periodoApuracao == null) ? 0 : periodoApuracao.hashCode());
 		result = (prime * result) + ((processoEmissao == null) ? 0 : processoEmissao.hashCode());
 		result = (prime * result) + ((tipoAmbiente == null) ? 0 : tipoAmbiente.hashCode());
-		result = (prime * result) + ((tipoEvento == null) ? 0 : tipoEvento.hashCode());
+		result = (prime * result) + ((indicativoRetificacao == null) ? 0 : indicativoRetificacao.hashCode());
 		result = (prime * result) + ((versaoProcessoEmissao == null) ? 0 : versaoProcessoEmissao.hashCode());
 		return result;
 	}
@@ -203,11 +204,11 @@ public class EventoTomadorServicoIdentificacaoEventoTO implements Serializable {
 		} else if (!tipoAmbiente.equals(other.tipoAmbiente)) {
 			return false;
 		}
-		if (tipoEvento == null) {
-			if (other.tipoEvento != null) {
+		if (indicativoRetificacao == null) {
+			if (other.indicativoRetificacao != null) {
 				return false;
 			}
-		} else if (!tipoEvento.equals(other.tipoEvento)) {
+		} else if (!indicativoRetificacao.equals(other.indicativoRetificacao)) {
 			return false;
 		}
 		if (versaoProcessoEmissao == null) {

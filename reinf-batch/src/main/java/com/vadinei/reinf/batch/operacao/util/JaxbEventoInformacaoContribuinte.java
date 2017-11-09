@@ -18,6 +18,8 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 
 	private final EventoTO eventoTO;
 
+	private final ObjectFactory jaxbObjectFactory;
+
 	private final Reinf.EvtInfoContri jaxbEvento;
 
 	/**
@@ -30,9 +32,9 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 		super();
 
 		this.eventoTO = eventoTO != null ? eventoTO : new EventoTomadorServicoTO();
+		this.jaxbObjectFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
 
-		final ObjectFactory jaxbFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
-		final Reinf.EvtInfoContri jaxbEvento = jaxbFactory.createReinfEvtInfoContri();
+		final Reinf.EvtInfoContri jaxbEvento = jaxbObjectFactory.createReinfEvtInfoContri();
 		this.jaxbEvento = jaxbEvento;
 	}
 
@@ -51,6 +53,11 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	@Override
 	public Object getJaxbEvento() {
 		return jaxbEvento;
+	}
+
+	@Override
+	public Object getJaxbObjectFactory() {
+		return jaxbObjectFactory;
 	}
 
 }

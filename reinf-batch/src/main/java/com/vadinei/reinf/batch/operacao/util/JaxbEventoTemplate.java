@@ -78,6 +78,8 @@ public abstract class JaxbEventoTemplate implements Serializable {
 
 	public abstract Object getJaxbEvento();
 
+	public abstract Object getJaxbObjectFactory();
+
 	public final void gerarXML() {
 
 		// TODO: Inicializar os dados do certificado e da senha.

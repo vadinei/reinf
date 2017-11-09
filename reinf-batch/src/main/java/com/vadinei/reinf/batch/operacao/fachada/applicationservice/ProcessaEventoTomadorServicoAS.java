@@ -58,7 +58,7 @@ implements ProcessaEventoTomadorServicoASLocal {
 
 		final EventoTomadorServicoTO eventoTomadorServicoTO = (EventoTomadorServicoTO) eventoTo;
 
-		// TODO: definir os atributos do evento.
+		// TODO: Definir os atributos do evento.
 
 		// Processa a geração do XML do evento.
 		final JaxbEventoTemplate jaxbEventoTemplate = new JaxbEventoTomadorServico(eventoTomadorServicoTO,

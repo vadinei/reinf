@@ -9,7 +9,7 @@ import java.util.List;
  * @author José Vádinei Soares - vadinei@hotmail.com
  *
  */
-public class EventoTomadorServicoNotaFiscalServico implements Serializable {
+public class EventoTomadorServicoNotaFiscalServicoTO implements Serializable {
 
 	private static final long serialVersionUID = -6693007616982139010L;
 
@@ -33,7 +33,7 @@ public class EventoTomadorServicoNotaFiscalServico implements Serializable {
 	 * @param valorBruto
 	 * @param observacao
 	 */
-	public EventoTomadorServicoNotaFiscalServico(final String serie, final String numeroDocumento,
+	public EventoTomadorServicoNotaFiscalServicoTO(final String serie, final String numeroDocumento,
 			final Date dataEmissaoNotaFiscal, final BigDecimal valorBruto, final String observacao) {
 		super();
 		this.serie = serie;
@@ -138,7 +138,7 @@ public class EventoTomadorServicoNotaFiscalServico implements Serializable {
 	 * @return O atributo serialversionuid
 	 */
 	public static long getSerialversionuid() {
-		return EventoTomadorServicoNotaFiscalServico.serialVersionUID;
+		return EventoTomadorServicoNotaFiscalServicoTO.serialVersionUID;
 	}
 
 	/*
@@ -171,7 +171,7 @@ public class EventoTomadorServicoNotaFiscalServico implements Serializable {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final EventoTomadorServicoNotaFiscalServico other = (EventoTomadorServicoNotaFiscalServico) obj;
+		final EventoTomadorServicoNotaFiscalServicoTO other = (EventoTomadorServicoNotaFiscalServicoTO) obj;
 		if (serie == null) {
 			if (other.serie != null) {
 				return false;

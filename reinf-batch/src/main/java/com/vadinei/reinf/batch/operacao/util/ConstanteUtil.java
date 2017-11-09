@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class ConstanteUtil implements Serializable {
 
+	public static final int CASA_DECIMAL_PADRAO = 2;
+
 	public static final String CERQUILHA = "#";
 
 	public static final String DOM = "DOM";
@@ -15,6 +17,10 @@ public class ConstanteUtil implements Serializable {
 	public static final String PKCS12 = "pkcs12";
 
 	public static final String REC_XML_C14N_20010315 = "http://www.w3.org/TR/2001/REC-xml-c14n-20010315";
+
+	public static final String SIGLA_BRASIL = "BR";
+
+	public static final String SIGLA_PORTUGUES = "pt";
 
 	public static final String STRING_VAZIA = "";
 

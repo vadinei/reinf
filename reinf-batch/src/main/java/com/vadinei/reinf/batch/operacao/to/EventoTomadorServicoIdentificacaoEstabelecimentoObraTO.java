@@ -17,7 +17,7 @@ public class EventoTomadorServicoIdentificacaoEstabelecimentoObraTO implements S
 	private final Short indicativoObra; // indObra
 
 	// idePrestServ
-	private EventoTomadorServivoIdentificacaoPrestadorServicoTO identificacaoPrestadorServicoTO;
+	private EventoTomadorServicoIdentificacaoPrestadorServicoTO identificacaoPrestadorServicoTO;
 
 	/**
 	 * @param tipoInscricaoEstabelecimento
@@ -35,7 +35,7 @@ public class EventoTomadorServicoIdentificacaoEstabelecimentoObraTO implements S
 	/**
 	 * @return O atributo identificacaoPrestadorServicoTO
 	 */
-	public EventoTomadorServivoIdentificacaoPrestadorServicoTO getIdentificacaoPrestadorServicoTO() {
+	public EventoTomadorServicoIdentificacaoPrestadorServicoTO getIdentificacaoPrestadorServicoTO() {
 		return identificacaoPrestadorServicoTO;
 	}
 
@@ -44,7 +44,7 @@ public class EventoTomadorServicoIdentificacaoEstabelecimentoObraTO implements S
 	 *            define o atributo identificacaoPrestadorServicoTO
 	 */
 	public void setIdentificacaoPrestadorServicoTO(
-			final EventoTomadorServivoIdentificacaoPrestadorServicoTO identificacaoPrestadorServicoTO) {
+			final EventoTomadorServicoIdentificacaoPrestadorServicoTO identificacaoPrestadorServicoTO) {
 		this.identificacaoPrestadorServicoTO = identificacaoPrestadorServicoTO;
 	}
 

@@ -8,28 +8,28 @@ import java.util.List;
  * @author José Vádinei Soares - vadinei@hotmail.com
  *
  */
-public class EventoTomadorServivoIdentificacaoPrestadorServicoTO implements Serializable {
+public class EventoTomadorServicoIdentificacaoPrestadorServicoTO implements Serializable {
 
 	private static final long serialVersionUID = 7093794534451395094L;
 
 	private String cnpjPrestador; // cnpjPrestador
 
-	private BigDecimal valorTotalBrutoNotaFiscal; // vlrTotalBruto
+	private BigDecimal valorTotalBrutoNotaFiscal; // valorTotalBruto
 
-	private BigDecimal vlrTotalBaseRetencaoContribuicao; // vlrTotalBaseRet
+	private BigDecimal valorTotalBaseRetencaoContribuicao; // valorTotalBaseRet
 
-	private BigDecimal valorTotalRetencaoPrincipalNotaFiscalServico; // vlrTotalRetPrinc
+	private BigDecimal valorTotalRetencaoPrincipalNotaFiscalServico; // valorTotalRetPrinc
 
-	private BigDecimal valorTotalRetencaoAdicionalNotaFiscalServico; // vlrTotalRetAdic
+	private BigDecimal valorTotalRetencaoAdicionalNotaFiscalServico; // valorTotalRetAdic
 
-	private BigDecimal valorTotalRetencaoPrincipalExcepcional; // vlrTotalNRetPrinc
+	private BigDecimal valorTotalRetencaoPrincipalExcepcional; // valorTotalNRetPrinc
 
-	private BigDecimal valorTotalRetencaoAdicionalExcepcional; // vlrTotalNRetAdic
+	private BigDecimal valorTotalRetencaoAdicionalExcepcional; // valorTotalNRetAdic
 
 	private Short indicativoCPRB; // indCPRB
 
 	// nfs
-	private List<EventoTomadorServicoNotaFiscalServico> listaNotaFiscalServico;
+	private List<EventoTomadorServicoNotaFiscalServicoTO> listaNotaFiscalServicoTO;
 
 	// infoProcRetPr
 	private List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO> listaInformacaoNaoRetencaoPrevidenciariaTO;
@@ -40,31 +40,28 @@ public class EventoTomadorServivoIdentificacaoPrestadorServicoTO implements Seri
 	/**
 	 * @param cnpjPrestador
 	 * @param valorTotalBrutoNotaFiscal
-	 * @param vlrTotalBaseRetencaoContribuicao
+	 * @param valorTotalBaseRetencaoContribuicao
 	 * @param valorTotalRetencaoPrincipalNotaFiscalServico
 	 * @param valorTotalRetencaoAdicionalNotaFiscalServico
 	 * @param valorTotalRetencaoPrincipalExcepcional
 	 * @param valorTotalRetencaoAdicionalExcepcional
 	 * @param indicativoCPRB
-	 * @param listaNotaFiscalServico
 	 */
-	public EventoTomadorServivoIdentificacaoPrestadorServicoTO(final String cnpjPrestador,
-			final BigDecimal valorTotalBrutoNotaFiscal, final BigDecimal vlrTotalBaseRetencaoContribuicao,
+	public EventoTomadorServicoIdentificacaoPrestadorServicoTO(final String cnpjPrestador,
+			final BigDecimal valorTotalBrutoNotaFiscal, final BigDecimal valorTotalBaseRetencaoContribuicao,
 			final BigDecimal valorTotalRetencaoPrincipalNotaFiscalServico,
 			final BigDecimal valorTotalRetencaoAdicionalNotaFiscalServico,
 			final BigDecimal valorTotalRetencaoPrincipalExcepcional,
-			final BigDecimal valorTotalRetencaoAdicionalExcepcional, final Short indicativoCPRB,
-			final List<EventoTomadorServicoNotaFiscalServico> listaNotaFiscalServico) {
+			final BigDecimal valorTotalRetencaoAdicionalExcepcional, final Short indicativoCPRB) {
 		super();
 		this.cnpjPrestador = cnpjPrestador;
 		this.valorTotalBrutoNotaFiscal = valorTotalBrutoNotaFiscal;
-		this.vlrTotalBaseRetencaoContribuicao = vlrTotalBaseRetencaoContribuicao;
+		this.valorTotalBaseRetencaoContribuicao = valorTotalBaseRetencaoContribuicao;
 		this.valorTotalRetencaoPrincipalNotaFiscalServico = valorTotalRetencaoPrincipalNotaFiscalServico;
 		this.valorTotalRetencaoAdicionalNotaFiscalServico = valorTotalRetencaoAdicionalNotaFiscalServico;
 		this.valorTotalRetencaoPrincipalExcepcional = valorTotalRetencaoPrincipalExcepcional;
 		this.valorTotalRetencaoAdicionalExcepcional = valorTotalRetencaoAdicionalExcepcional;
 		this.indicativoCPRB = indicativoCPRB;
-		this.listaNotaFiscalServico = listaNotaFiscalServico;
 	}
 
 	/**
@@ -98,18 +95,18 @@ public class EventoTomadorServivoIdentificacaoPrestadorServicoTO implements Seri
 	}
 
 	/**
-	 * @return O atributo vlrTotalBaseRetencaoContribuicao
+	 * @return O atributo valorTotalBaseRetencaoContribuicao
 	 */
-	public BigDecimal getVlrTotalBaseRetencaoContribuicao() {
-		return vlrTotalBaseRetencaoContribuicao;
+	public BigDecimal getValorTotalBaseRetencaoContribuicao() {
+		return valorTotalBaseRetencaoContribuicao;
 	}
 
 	/**
-	 * @param vlrTotalBaseRetencaoContribuicao
-	 *            define o atributo vlrTotalBaseRetencaoContribuicao
+	 * @param valorTotalBaseRetencaoContribuicao
+	 *            define o atributo valorTotalBaseRetencaoContribuicao
 	 */
-	public void setVlrTotalBaseRetencaoContribuicao(final BigDecimal vlrTotalBaseRetencaoContribuicao) {
-		this.vlrTotalBaseRetencaoContribuicao = vlrTotalBaseRetencaoContribuicao;
+	public void setValorTotalBaseRetencaoContribuicao(final BigDecimal valorTotalBaseRetencaoContribuicao) {
+		this.valorTotalBaseRetencaoContribuicao = valorTotalBaseRetencaoContribuicao;
 	}
 
 	/**
@@ -190,18 +187,19 @@ public class EventoTomadorServivoIdentificacaoPrestadorServicoTO implements Seri
 	}
 
 	/**
-	 * @return O atributo listaNotaFiscalServico
+	 * @return O atributo listaNotaFiscalServicoTO
 	 */
-	public List<EventoTomadorServicoNotaFiscalServico> getListaNotaFiscalServico() {
-		return listaNotaFiscalServico;
+	public List<EventoTomadorServicoNotaFiscalServicoTO> getListaNotaFiscalServicoTO() {
+		return listaNotaFiscalServicoTO;
 	}
 
 	/**
-	 * @param listaNotaFiscalServico
-	 *            define o atributo listaNotaFiscalServico
+	 * @param listaNotaFiscalServicoTO
+	 *            define o atributo listaNotaFiscalServicoTO
 	 */
-	public void setListaNotaFiscalServico(final List<EventoTomadorServicoNotaFiscalServico> listaNotaFiscalServico) {
-		this.listaNotaFiscalServico = listaNotaFiscalServico;
+	public void setListaNotaFiscalServicoTO(
+			final List<EventoTomadorServicoNotaFiscalServicoTO> listaNotaFiscalServicoTO) {
+		this.listaNotaFiscalServicoTO = listaNotaFiscalServicoTO;
 	}
 
 	/**
@@ -241,7 +239,7 @@ public class EventoTomadorServivoIdentificacaoPrestadorServicoTO implements Seri
 	 * @return O atributo serialversionuid
 	 */
 	public static long getSerialversionuid() {
-		return EventoTomadorServivoIdentificacaoPrestadorServicoTO.serialVersionUID;
+		return EventoTomadorServicoIdentificacaoPrestadorServicoTO.serialVersionUID;
 	}
 
 	/*
@@ -273,7 +271,7 @@ public class EventoTomadorServivoIdentificacaoPrestadorServicoTO implements Seri
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final EventoTomadorServivoIdentificacaoPrestadorServicoTO other = (EventoTomadorServivoIdentificacaoPrestadorServicoTO) obj;
+		final EventoTomadorServicoIdentificacaoPrestadorServicoTO other = (EventoTomadorServicoIdentificacaoPrestadorServicoTO) obj;
 		if (cnpjPrestador == null) {
 			if (other.cnpjPrestador != null) {
 				return false;
