@@ -11,9 +11,9 @@ public class EventoTomadorServicoInformacaoTipoServicoTO implements Serializable
 
 	private static final long serialVersionUID = 1416887134069513634L;
 
-	private Long tipoServico; // tpServico
+	private String tipoServico; // tpServico
 
-	private BigDecimal valorBaseCalculoRetencao; // vlrBaseRet
+	private BigDecimal valorBaseRetencao; // vlrBaseRet
 
 	private BigDecimal valorRetencao; // vlrRetencao
 
@@ -33,7 +33,7 @@ public class EventoTomadorServicoInformacaoTipoServicoTO implements Serializable
 
 	/**
 	 * @param tipoServico
-	 * @param valorBaseCalculoRetencao
+	 * @param valorBaseRetencao
 	 * @param valorRetencao
 	 * @param valorRetencaoServicoSubcontratado
 	 * @param valorRetencaoPrincipalExcepcional
@@ -43,15 +43,15 @@ public class EventoTomadorServicoInformacaoTipoServicoTO implements Serializable
 	 * @param valorAdicional
 	 * @param valorRetencaoAdicionalExcepcional
 	 */
-	public EventoTomadorServicoInformacaoTipoServicoTO(final Long tipoServico,
-			final BigDecimal valorBaseCalculoRetencao, final BigDecimal valorRetencao,
+	public EventoTomadorServicoInformacaoTipoServicoTO(final String tipoServico,
+			final BigDecimal valorBaseRetencao, final BigDecimal valorRetencao,
 			final BigDecimal valorRetencaoServicoSubcontratado, final BigDecimal valorRetencaoPrincipalExcepcional,
 			final BigDecimal valorServicoSeguradoEspecial15Anos, final BigDecimal valorServicoSeguradoEspecial20Anos,
 			final BigDecimal valorServicoSeguradoEspecial25Anos, final BigDecimal valorAdicional,
 			final BigDecimal valorRetencaoAdicionalExcepcional) {
 		super();
 		this.tipoServico = tipoServico;
-		this.valorBaseCalculoRetencao = valorBaseCalculoRetencao;
+		this.valorBaseRetencao = valorBaseRetencao;
 		this.valorRetencao = valorRetencao;
 		this.valorRetencaoServicoSubcontratado = valorRetencaoServicoSubcontratado;
 		this.valorRetencaoPrincipalExcepcional = valorRetencaoPrincipalExcepcional;
@@ -65,7 +65,7 @@ public class EventoTomadorServicoInformacaoTipoServicoTO implements Serializable
 	/**
 	 * @return O atributo tipoServico
 	 */
-	public Long getTipoServico() {
+	public String getTipoServico() {
 		return tipoServico;
 	}
 
@@ -73,23 +73,23 @@ public class EventoTomadorServicoInformacaoTipoServicoTO implements Serializable
 	 * @param tipoServico
 	 *            define o atributo tipoServico
 	 */
-	public void setTipoServico(final Long tipoServico) {
+	public void setTipoServico(final String tipoServico) {
 		this.tipoServico = tipoServico;
 	}
 
 	/**
-	 * @return O atributo valorBaseCalculoRetencao
+	 * @return O atributo valorBaseRetencao
 	 */
-	public BigDecimal getValorBaseCalculoRetencao() {
-		return valorBaseCalculoRetencao;
+	public BigDecimal getValorBaseRetencao() {
+		return valorBaseRetencao;
 	}
 
 	/**
-	 * @param valorBaseCalculoRetencao
-	 *            define o atributo valorBaseCalculoRetencao
+	 * @param valorBaseRetencao
+	 *            define o atributo valorBaseRetencao
 	 */
-	public void setValorBaseCalculoRetencao(final BigDecimal valorBaseCalculoRetencao) {
-		this.valorBaseCalculoRetencao = valorBaseCalculoRetencao;
+	public void setValorBaseRetencao(final BigDecimal valorBaseRetencao) {
+		this.valorBaseRetencao = valorBaseRetencao;
 	}
 
 	/**

@@ -60,7 +60,7 @@ import com.vadinei.reinf.batch.operacao.to.EventoTO;
  *
  * Template Method para montar o XML dos Eventos.
  */
-public abstract class JaxbEventoTemplate implements Serializable {
+public abstract class JaxbEventoTemplateUtil implements Serializable {
 
 	private static final long serialVersionUID = -1133445889633453386L;
 
@@ -72,7 +72,7 @@ public abstract class JaxbEventoTemplate implements Serializable {
 
 	private String senha;
 
-	public abstract void prepararGerarXML();
+	public abstract void prepararGeracaoXML();
 
 	public abstract EventoTO getEventoTO();
 
@@ -86,7 +86,7 @@ public abstract class JaxbEventoTemplate implements Serializable {
 		caminhoCertificado = ConstanteUtil.STRING_VAZIA;
 		senha = ConstanteUtil.STRING_VAZIA;
 
-		prepararGerarXML();
+		prepararGeracaoXML();
 
 		final EventoTO eventoTO = getEventoTO();
 		final Object jaxbEvento = getJaxbEvento();

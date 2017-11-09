@@ -12,7 +12,7 @@ import com.vadinei.reinf.batch.schema.evento.informacaocontribuinte.Reinf;
  * @author José Vádinei Soares - vadinei@hotmail.com
  *
  */
-public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate implements Serializable {
+public class JaxbEventoInformacaoContribuinteUtil extends JaxbEventoTemplateUtil implements Serializable {
 
 	private static final long serialVersionUID = -3109992683791859805L;
 
@@ -27,7 +27,7 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	 * @param jaxbEvento
 	 * @param jaxbObjectFactory
 	 */
-	public JaxbEventoInformacaoContribuinte(final EventoInformacaoContribuinteTO eventoTO,
+	public JaxbEventoInformacaoContribuinteUtil(final EventoInformacaoContribuinteTO eventoTO,
 			final ObjectFactory jaxbObjectFactory) {
 		super();
 
@@ -39,7 +39,7 @@ public class JaxbEventoInformacaoContribuinte extends JaxbEventoTemplate impleme
 	}
 
 	@Override
-	public void prepararGerarXML() {
+	public void prepararGeracaoXML() {
 
 		// TODO: Implementação da passagem dos valores do eventoTo para jaxbEvento.
 

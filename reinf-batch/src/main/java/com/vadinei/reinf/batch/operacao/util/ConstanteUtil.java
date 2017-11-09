@@ -1,16 +1,27 @@
 package com.vadinei.reinf.batch.operacao.util;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class ConstanteUtil implements Serializable {
 
-	public static final int CASA_DECIMAL_PADRAO = 2;
-
 	public static final String CERQUILHA = "#";
+
+	public static final String DATA_XML_FORMATO_YYYY_MM = "yyyyMM";
+
+	public static final String DATA_XML_FORMATO_YYYY_MM_SEPARADO = "yyyy-MM";
+
+	public static final String DATA_XML_FORMATO_YYYY_MM_DD = "yyyyMMdd";
+
+	public static final String DATA_XML_FORMATO_YYYY_MM_DD_SEPARADO = "yyyy-MM-dd";
 
 	public static final String DOM = "DOM";
 
 	public static final String ID = "id";
+
+	public static final Locale LOCALE_PT_BR = new Locale(ConstanteUtil.SIGLA_PORTUGUES, ConstanteUtil.SIGLA_BRASIL);
+
+	public static final int NUMERO_CASA_DECIMAL_PADRAO = 2;
 
 	public static final String P_ASCII = "[^\\p{ASCII}]";
 
@@ -29,6 +40,8 @@ public class ConstanteUtil implements Serializable {
 	public static final String UTF_8 = "UTF-8";
 
 	public static final String XMLDSIG_MORE_RSA_SHA256 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
+
+	public static final double ZERO_DOUBLE = 0d;
 
 	private static final long serialVersionUID = -7090522224169475459L;
 

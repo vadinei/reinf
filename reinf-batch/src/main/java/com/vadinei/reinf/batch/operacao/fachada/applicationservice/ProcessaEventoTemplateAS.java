@@ -17,7 +17,7 @@ import com.vadinei.reinf.batch.operacao.to.EventoTO;
  * Template Method para a camada Application Service (AS) dos Eventos
  */
 @Stateless
-public abstract class ProcessaEventoASTemplate implements ProcessaEventoASTemplateLocal {
+public abstract class ProcessaEventoTemplateAS implements ProcessaEventoTemplateASLocal {
 
 	private static final long serialVersionUID = -6664115365931509299L;
 

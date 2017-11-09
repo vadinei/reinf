@@ -9,7 +9,7 @@ import javax.ejb.Local;
  *
  */
 @Local
-public interface ProcessaEventoASTemplateLocal extends Serializable {
+public interface ProcessaEventoTemplateASLocal extends Serializable {
 
 	void gerarEvento(final String mensagem);
 

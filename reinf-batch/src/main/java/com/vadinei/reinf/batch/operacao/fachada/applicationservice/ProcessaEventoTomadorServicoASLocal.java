@@ -7,6 +7,6 @@ import javax.ejb.Local;
  *
  */
 @Local
-public interface ProcessaEventoTomadorServicoASLocal extends ProcessaEventoASTemplateLocal {
+public interface ProcessaEventoTomadorServicoASLocal extends ProcessaEventoTemplateASLocal {
 
 }

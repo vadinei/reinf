@@ -12,8 +12,8 @@ import com.vadinei.reinf.batch.operacao.fachada.applicationservice.entitycontrol
 import com.vadinei.reinf.batch.operacao.to.EventoInformacaoContribuinteTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoTO;
-import com.vadinei.reinf.batch.operacao.util.JaxbEventoTemplate;
-import com.vadinei.reinf.batch.operacao.util.JaxbEventoTomadorServico;
+import com.vadinei.reinf.batch.operacao.util.JaxbEventoTemplateUtil;
+import com.vadinei.reinf.batch.operacao.util.JaxbEventoTomadorServicoUtil;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.ObjectFactory;
 
 /**
@@ -21,7 +21,7 @@ import com.vadinei.reinf.batch.schema.evento.tomadorservico.ObjectFactory;
  *
  */
 @Stateless
-public class ProcessaEventoTomadorServicoAS extends ProcessaEventoASTemplate
+public class ProcessaEventoTomadorServicoAS extends ProcessaEventoTemplateAS
 implements ProcessaEventoTomadorServicoASLocal {
 
 	@EJB
@@ -61,9 +61,9 @@ implements ProcessaEventoTomadorServicoASLocal {
 		// TODO: Definir os atributos do evento.
 
 		// Processa a geração do XML do evento.
-		final JaxbEventoTemplate jaxbEventoTemplate = new JaxbEventoTomadorServico(eventoTomadorServicoTO,
+		final JaxbEventoTemplateUtil jaxbEventoTemplateUtil = new JaxbEventoTomadorServicoUtil(eventoTomadorServicoTO,
 				jaxbObjectFactory);
-		jaxbEventoTemplate.gerarXML();
+		jaxbEventoTemplateUtil.gerarXML();
 
 	}
 
