@@ -5,5 +5,5 @@
 // Gerado em: 2017.11.06 às 02:26:58 PM GFT 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.w3.org/2000/09/xmldsig#", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.reinf.esocial.gov.br/schemas/evtInfoContribuinte/v1_02_00", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.vadinei.reinf.batch.schema.evento.informacaocontribuinte;

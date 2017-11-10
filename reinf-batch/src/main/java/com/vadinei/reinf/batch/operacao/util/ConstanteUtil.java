@@ -35,6 +35,8 @@ public class ConstanteUtil implements Serializable {
 
 	public static final String STRING_VAZIA = "";
 
+	public static final String STRING_ESPACO = " ";
+
 	public static final String TAG_REINF = "Reinf";
 
 	public static final String UTF_8 = "UTF-8";

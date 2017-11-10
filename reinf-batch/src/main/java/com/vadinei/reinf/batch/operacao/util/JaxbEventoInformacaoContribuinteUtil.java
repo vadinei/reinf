@@ -29,6 +29,7 @@ public class JaxbEventoInformacaoContribuinteUtil extends JaxbEventoTemplateUtil
 	 */
 	public JaxbEventoInformacaoContribuinteUtil(final EventoInformacaoContribuinteTO eventoTO,
 			final ObjectFactory jaxbObjectFactory) {
+
 		super();
 
 		this.eventoTO = eventoTO != null ? eventoTO : new EventoTomadorServicoTO();
@@ -36,6 +37,7 @@ public class JaxbEventoInformacaoContribuinteUtil extends JaxbEventoTemplateUtil
 
 		final Reinf.EvtInfoContri jaxbEvento = jaxbObjectFactory.createReinfEvtInfoContri();
 		this.jaxbEvento = jaxbEvento;
+
 	}
 
 	@Override
@@ -58,6 +60,11 @@ public class JaxbEventoInformacaoContribuinteUtil extends JaxbEventoTemplateUtil
 	@Override
 	public Object getJaxbObjectFactory() {
 		return jaxbObjectFactory;
+	}
+
+	@Override
+	public String getNamespace() {
+		return null;
 	}
 
 }

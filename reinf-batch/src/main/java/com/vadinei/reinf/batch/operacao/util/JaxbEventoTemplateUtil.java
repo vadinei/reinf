@@ -58,9 +58,19 @@ import com.vadinei.reinf.batch.operacao.to.EventoTO;
 /**
  * @author José Vádinei Soares - vadinei@hotmail.com
  *
- * Template Method para montar o XML dos Eventos.
+ *         Template Method para montar o XML dos Eventos.
  */
 public abstract class JaxbEventoTemplateUtil implements Serializable {
+
+	private static final String NAMESPACE_SIGNATURE = "xmlns:=\"http://www.w3.org/2000/09/xmldsig#\"";
+
+	private static final String SIGNATURE = "<Signature";
+
+	private static final String TODOS_OS_NAMESPACES = "(\\s)xmlns(.*)\"";
+
+	private static final String REINF = "<Reinf";
+
+	private static final String XML_VERSION_1_0_ENCODING_UTF_8 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 
 	private static final long serialVersionUID = -1133445889633453386L;
 
@@ -80,6 +90,8 @@ public abstract class JaxbEventoTemplateUtil implements Serializable {
 
 	public abstract Object getJaxbObjectFactory();
 
+	public abstract String getNamespace();
+
 	public final void gerarXML() {
 
 		// TODO: Inicializar os dados do certificado e da senha.
@@ -97,48 +109,94 @@ public abstract class JaxbEventoTemplateUtil implements Serializable {
 		}
 
 		final StringWriter writer = new StringWriter();
+		writer.append(JaxbEventoTemplateUtil.XML_VERSION_1_0_ENCODING_UTF_8);
 
 		try {
 			final JAXBContext context = JAXBContext.newInstance(jaxbEvento.getClass());
 			final Marshaller marshaller = context.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+			marshaller.setProperty(Marshaller.JAXB_ENCODING, ConstanteUtil.UTF_8);
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 			marshaller.marshal(jaxbEvento, writer);
 
-			String xml = writer.toString();
-			xml = ValidacaoUtil.excluirAcentos(xml);
-			eventoTO.setXmlOriginal(xml);
+			final String xmlOriginal = getXML(writer.toString());
+			eventoTO.setXmlOriginal(xmlOriginal);
 
-			xml = getXMLAssinado(eventoTO);
-			eventoTO.setXmlEnvio(xml);
+			// final String xmlEnvio = getXMLAssinado(eventoTO);
+			// eventoTO.setXmlEnvio(xmlEnvio);
 		} catch (final JAXBException e) {
 			e.printStackTrace();
-		} catch (final NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (final InvalidAlgorithmParameterException e) {
-			e.printStackTrace();
-		} catch (final KeyStoreException e) {
-			e.printStackTrace();
-		} catch (final CertificateException e) {
-			e.printStackTrace();
-		} catch (final UnrecoverableEntryException e) {
-			e.printStackTrace();
-		} catch (final SAXException e) {
-			e.printStackTrace();
-		} catch (final IOException e) {
-			e.printStackTrace();
-		} catch (final ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (final MarshalException e) {
-			e.printStackTrace();
-		} catch (final XMLSignatureException e) {
-			e.printStackTrace();
-		} catch (final TransformerFactoryConfigurationError e) {
-			e.printStackTrace();
-		} catch (final TransformerException e) {
-			e.printStackTrace();
 		}
+		// } catch (final NoSuchAlgorithmException e) {
+		// e.printStackTrace();
+		// } catch (final InvalidAlgorithmParameterException e) {
+		// e.printStackTrace();
+		// } catch (final KeyStoreException e) {
+		// e.printStackTrace();
+		// } catch (final CertificateException e) {
+		// e.printStackTrace();
+		// } catch (final UnrecoverableEntryException e) {
+		// e.printStackTrace();
+		// } catch (final SAXException e) {
+		// e.printStackTrace();
+		// } catch (final IOException e) {
+		// e.printStackTrace();
+		// } catch (final ParserConfigurationException e) {
+		// e.printStackTrace();
+		// } catch (final MarshalException e) {
+		// e.printStackTrace();
+		// } catch (final XMLSignatureException e) {
+		// e.printStackTrace();
+		// } catch (final TransformerFactoryConfigurationError e) {
+		// e.printStackTrace();
+		// } catch (final TransformerException e) {
+		// e.printStackTrace();
+		// }
 
 	}
 
+	/**
+	 * @param xml
+	 * @return String
+	 */
+	private String getXML(final String xml) {
+
+		String retorno = ConstanteUtil.STRING_VAZIA;
+
+		if ((xml != null) && (!xml.isEmpty())) {
+
+			/*
+			 * Cada evento XML deverá ter uma única declaração de namespace no elemento raiz
+			 * do documento... Não é permitido o uso de declaração de namespace diferente do
+			 * padrão estabelecido. O trecho referente à versão do leiaute (v1_01_01) deve
+			 * ser atualizada sempre que necessário, quando houver atualizações do Schema
+			 * .xsd... A declaração do namespace da assinatura digital deverá ser realizada
+			 * na própria tag <Signature> (EFD-Reinf - Manual de Orientação do
+			 * Desenvolvedor: Versão 1.1 - Julho de 2017, p. 12-13)
+			 */
+			retorno = xml.replaceAll(JaxbEventoTemplateUtil.TODOS_OS_NAMESPACES, ConstanteUtil.STRING_VAZIA);
+
+			final StringBuilder sbNamespaceReinf = new StringBuilder();
+			sbNamespaceReinf.append(JaxbEventoTemplateUtil.REINF);
+			sbNamespaceReinf.append(ConstanteUtil.STRING_ESPACO);
+			sbNamespaceReinf.append(getNamespace());
+
+			final StringBuilder sbNamespaceSignature = new StringBuilder();
+			sbNamespaceSignature.append(JaxbEventoTemplateUtil.SIGNATURE);
+			sbNamespaceSignature.append(ConstanteUtil.STRING_ESPACO);
+			sbNamespaceSignature.append(JaxbEventoTemplateUtil.NAMESPACE_SIGNATURE);
+
+			retorno = retorno.replaceAll(JaxbEventoTemplateUtil.REINF, sbNamespaceReinf.toString());
+			retorno = retorno.replaceAll(JaxbEventoTemplateUtil.SIGNATURE, sbNamespaceSignature.toString());
+
+			retorno = ValidacaoUtil.excluirAcentos(retorno);
+		}
+
+		return retorno;
+
+	}
+
+	@SuppressWarnings("unused")
 	private String getXMLAssinado(final EventoTO eventoTO)
 			throws SAXException, IOException, ParserConfigurationException, NoSuchAlgorithmException,
 			InvalidAlgorithmParameterException, KeyStoreException, CertificateException, UnrecoverableEntryException,
@@ -154,7 +212,7 @@ public abstract class JaxbEventoTemplateUtil implements Serializable {
 		final String tagName = TipoEventoEnum.getInstance(eventoTO.getTipoEvento()).getTag();
 
 		for (int index = 0; index < document.getDocumentElement().getElementsByTagName(tagName).getLength(); index++) {
-			assinarEFinanceira(signatureFactory, transformList, document, index, tagName);
+			assinar(signatureFactory, transformList, document, index, tagName);
 		}
 
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -228,7 +286,7 @@ public abstract class JaxbEventoTemplateUtil implements Serializable {
 
 	}
 
-	private void assinarEFinanceira(final XMLSignatureFactory signatureFactory, final List<Transform> transformList,
+	private void assinar(final XMLSignatureFactory signatureFactory, final List<Transform> transformList,
 			final Document document, final int index, final String tag) throws NoSuchAlgorithmException,
 	InvalidAlgorithmParameterException, MarshalException, XMLSignatureException {
 

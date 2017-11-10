@@ -14,7 +14,9 @@ import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoServico
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoTipoServicoTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoNotaFiscalServicoTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoTO;
+import com.vadinei.reinf.batch.schema.comum.SignatureType;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.ObjectFactory;
+import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf.EvtServTom;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf.EvtServTom.IdeContri;
 import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf.EvtServTom.IdeEvento;
@@ -32,13 +34,15 @@ import com.vadinei.reinf.batch.schema.evento.tomadorservico.Reinf.EvtServTom.Inf
  */
 public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil implements Serializable {
 
+	private static final String NAMESPACE = "xmlns:\"http://www.reinf.esocial.gov.br/schemas/evtTomadorServicos/v1_02_00\"";
+
 	private static final long serialVersionUID = 3642357472086523563L;
 
 	private final EventoTO eventoTO;
 
 	private final ObjectFactory jaxbObjectFactory;
 
-	private final EvtServTom jaxbEvento;
+	private final Reinf jaxbEvento;
 
 	/**
 	 * @param eventoTomadorServicoTO
@@ -52,7 +56,7 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		eventoTO = eventoTomadorServicoTO != null ? eventoTomadorServicoTO : new EventoTomadorServicoTO();
 		this.jaxbObjectFactory = jaxbObjectFactory != null ? jaxbObjectFactory : new ObjectFactory();
 
-		final EvtServTom jaxbEvento = jaxbObjectFactory.createReinfEvtServTom();
+		final Reinf jaxbEvento = jaxbObjectFactory.createReinf();
 		this.jaxbEvento = jaxbEvento;
 
 	}
@@ -62,22 +66,28 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 
 		final EventoTomadorServicoTO eventoTO = (EventoTomadorServicoTO) getEventoTO();
 		final ObjectFactory jaxbObjectFactory = (ObjectFactory) getJaxbObjectFactory();
-		final EvtServTom jaxbEvento = (EvtServTom) getJaxbEvento();
+		final Reinf jaxbEvento = (Reinf) getJaxbEvento();
 
-		jaxbEvento.setId(eventoTO.getId());
+		// evtServTom
+		final EvtServTom evtServTom = jaxbObjectFactory.createReinfEvtServTom();
+		evtServTom.setId(eventoTO.getId());
 
 		// ideEvento
 		final IdeEvento ideEvento = getIdeEvento(eventoTO, jaxbObjectFactory);
-		jaxbEvento.setIdeEvento(ideEvento);
+		evtServTom.setIdeEvento(ideEvento);
 
 		// ideContri
 		final IdeContri ideContri = getIdeContri(eventoTO, jaxbObjectFactory);
-		jaxbEvento.setIdeContri(ideContri);
+		evtServTom.setIdeContri(ideContri);
 
 		// infoServTom
 		final InfoServTom infoServTom = getInfoServTom(eventoTO, jaxbObjectFactory);
-		jaxbEvento.setInfoServTom(infoServTom);
+		evtServTom.setInfoServTom(infoServTom);
 
+		jaxbEvento.setEvtServTom(evtServTom);
+
+		final SignatureType signature = jaxbObjectFactory.createSignatureType();
+		jaxbEvento.setSignature(signature);
 	}
 
 	/**
@@ -214,12 +224,18 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		}
 
 		retorno.setCnpjPrestador(identificacaoPrestadorServicoTO.getCnpjPrestador());
-		retorno.setVlrTotalBruto(NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalBrutoNotaFiscal()));
-		retorno.setVlrTotalBaseRet(NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalBaseRetencaoContribuicao()));
-		retorno.setVlrTotalRetPrinc(NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalRetencaoPrincipalNotaFiscalServico()));
-		retorno.setVlrTotalRetAdic(NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalRetencaoAdicionalNotaFiscalServico()));
-		retorno.setVlrTotalNRetPrinc(NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalRetencaoPrincipalExcepcional()));
-		retorno.setVlrTotalNRetAdic(NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalRetencaoAdicionalExcepcional()));
+		retorno.setVlrTotalBruto(
+				NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalBrutoNotaFiscal()));
+		retorno.setVlrTotalBaseRet(NumberUtil
+				.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalBaseRetencaoContribuicao()));
+		retorno.setVlrTotalRetPrinc(NumberUtil.formatarBigDecimalParaXML(
+				identificacaoPrestadorServicoTO.getValorTotalRetencaoPrincipalNotaFiscalServico()));
+		retorno.setVlrTotalRetAdic(NumberUtil.formatarBigDecimalParaXML(
+				identificacaoPrestadorServicoTO.getValorTotalRetencaoAdicionalNotaFiscalServico()));
+		retorno.setVlrTotalNRetPrinc(NumberUtil.formatarBigDecimalParaXML(
+				identificacaoPrestadorServicoTO.getValorTotalRetencaoPrincipalExcepcional()));
+		retorno.setVlrTotalNRetAdic(NumberUtil.formatarBigDecimalParaXML(
+				identificacaoPrestadorServicoTO.getValorTotalRetencaoAdicionalExcepcional()));
 		retorno.setIndCPRB(identificacaoPrestadorServicoTO.getIndicativoCPRB());
 
 		// nfs
@@ -318,12 +334,17 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		retorno.setVlrBaseRet(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorBaseRetencao()));
 		retorno.setVlrRetencao(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencao()));
 		retorno.setVlrRetSub(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoServicoSubcontratado()));
-		retorno.setVlrNRetPrinc(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoPrincipalExcepcional()));
-		retorno.setVlrServicos15(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorServicoSeguradoEspecial15Anos()));
-		retorno.setVlrServicos20(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorServicoSeguradoEspecial20Anos()));
-		retorno.setVlrServicos25(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorServicoSeguradoEspecial25Anos()));
+		retorno.setVlrNRetPrinc(
+				NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoPrincipalExcepcional()));
+		retorno.setVlrServicos15(
+				NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorServicoSeguradoEspecial15Anos()));
+		retorno.setVlrServicos20(
+				NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorServicoSeguradoEspecial20Anos()));
+		retorno.setVlrServicos25(
+				NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorServicoSeguradoEspecial25Anos()));
 		retorno.setVlrAdicional(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorAdicional()));
-		retorno.setVlrNRetAdic(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoAdicionalExcepcional()));
+		retorno.setVlrNRetAdic(
+				NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoAdicionalExcepcional()));
 
 		return retorno;
 
@@ -445,6 +466,11 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 	@Override
 	public Object getJaxbObjectFactory() {
 		return jaxbObjectFactory;
+	}
+
+	@Override
+	public String getNamespace() {
+		return JaxbEventoTomadorServicoUtil.NAMESPACE;
 	}
 
 }
