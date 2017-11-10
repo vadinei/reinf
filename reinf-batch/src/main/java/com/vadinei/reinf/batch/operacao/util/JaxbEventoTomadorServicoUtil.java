@@ -8,8 +8,8 @@ import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoIdentificacaoCont
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoIdentificacaoEstabelecimentoObraTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoIdentificacaoEventoTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoIdentificacaoPrestadorServicoTO;
-import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO;
-import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO;
+import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO;
+import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoServicoTomadoTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoInformacaoTipoServicoTO;
 import com.vadinei.reinf.batch.operacao.to.EventoTomadorServicoNotaFiscalServicoTO;
@@ -106,7 +106,7 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 
 		retorno.setIndRetif(identificacaoEventoTO.getIndicativoRetificacao());
 		retorno.setNrRecibo(identificacaoEventoTO.getNumeroRecibo());
-		retorno.setPerApur(DataUtil.converterDateParaXML(identificacaoEventoTO.getPeriodoApuracao()));
+		retorno.setPerApur(DataUtil.converterDateParaXML(identificacaoEventoTO.getPeriodoApuracao(), "yyyy-MM"));
 		retorno.setTpAmb(identificacaoEventoTO.getTipoAmbiente());
 		retorno.setProcEmi(identificacaoEventoTO.getProcessoEmissao());
 		retorno.setVerProc(identificacaoEventoTO.getVersaoProcessoEmissao());
@@ -224,12 +224,12 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		}
 
 		retorno.setCnpjPrestador(identificacaoPrestadorServicoTO.getCnpjPrestador());
-		retorno.setVlrTotalBruto(
-				NumberUtil.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalBrutoNotaFiscal()));
-		retorno.setVlrTotalBaseRet(NumberUtil
-				.formatarBigDecimalParaXML(identificacaoPrestadorServicoTO.getValorTotalBaseRetencaoContribuicao()));
+		retorno.setVlrTotalBruto(NumberUtil.formatarBigDecimalParaXML(
+				identificacaoPrestadorServicoTO.getValorTotalBrutoNotaFiscal(), Boolean.TRUE));
+		retorno.setVlrTotalBaseRet(NumberUtil.formatarBigDecimalParaXML(
+				identificacaoPrestadorServicoTO.getValorTotalBaseRetencaoContribuicao(), Boolean.TRUE));
 		retorno.setVlrTotalRetPrinc(NumberUtil.formatarBigDecimalParaXML(
-				identificacaoPrestadorServicoTO.getValorTotalRetencaoPrincipalNotaFiscalServico()));
+				identificacaoPrestadorServicoTO.getValorTotalRetencaoPrincipalNotaFiscalServico(), Boolean.TRUE));
 		retorno.setVlrTotalRetAdic(NumberUtil.formatarBigDecimalParaXML(
 				identificacaoPrestadorServicoTO.getValorTotalRetencaoAdicionalNotaFiscalServico()));
 		retorno.setVlrTotalNRetPrinc(NumberUtil.formatarBigDecimalParaXML(
@@ -292,7 +292,7 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		retorno.setSerie(nfsTO.getSerie());
 		retorno.setNumDocto(nfsTO.getNumeroDocumento());
 		retorno.setDtEmissaoNF(DataUtil.converterDateParaXML(nfsTO.getDataEmissaoNotaFiscal()));
-		retorno.setVlrBruto(NumberUtil.formatarBigDecimalParaXML(nfsTO.getValorBruto()));
+		retorno.setVlrBruto(NumberUtil.formatarBigDecimalParaXML(nfsTO.getValorBruto(), Boolean.TRUE));
 		retorno.setObs(nfsTO.getObservacao());
 
 		// infoTpServ
@@ -331,8 +331,8 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		}
 
 		retorno.setTpServico(infoTpServTO.getTipoServico());
-		retorno.setVlrBaseRet(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorBaseRetencao()));
-		retorno.setVlrRetencao(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencao()));
+		retorno.setVlrBaseRet(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorBaseRetencao(), Boolean.TRUE));
+		retorno.setVlrRetencao(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencao(), Boolean.TRUE));
 		retorno.setVlrRetSub(NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoServicoSubcontratado()));
 		retorno.setVlrNRetPrinc(
 				NumberUtil.formatarBigDecimalParaXML(infoTpServTO.getValorRetencaoPrincipalExcepcional()));
@@ -359,13 +359,13 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 			final EventoTomadorServicoIdentificacaoPrestadorServicoTO identificacaoPrestadorServicoTO,
 			final IdePrestServ retorno, final ObjectFactory jaxbObjectFactory) {
 
-		final List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO> listaInfNaoRetencaoPrevidenciariaTO = identificacaoPrestadorServicoTO
-				.getListaInformacaoNaoRetencaoPrevidenciariaTO();
+		final List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO> listaInfNaoRetencaoPrevidenciariaTO = identificacaoPrestadorServicoTO
+				.getListaInformacaoProcessoNaoRetencaoPrevidenciariaTO();
 
 		if ((listaInfNaoRetencaoPrevidenciariaTO != null) && (!listaInfNaoRetencaoPrevidenciariaTO.isEmpty())) {
 
 			final List<InfoProcRetPr> listaInfoProcRetPr = retorno.getInfoProcRetPr();
-			for (final EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO infoProcRetPrTO : listaInfNaoRetencaoPrevidenciariaTO) {
+			for (final EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO infoProcRetPrTO : listaInfNaoRetencaoPrevidenciariaTO) {
 
 				final InfoProcRetPr infoProcRetPr = getInfoProcRetPr(infoProcRetPrTO, jaxbObjectFactory);
 				listaInfoProcRetPr.add(infoProcRetPr);
@@ -382,7 +382,7 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 	 * @return InfoProcRetPr
 	 */
 	private InfoProcRetPr getInfoProcRetPr(
-			final EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO infoProcRetPrTO,
+			final EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO infoProcRetPrTO,
 			final ObjectFactory jaxbObjectFactory) {
 
 		final InfoProcRetPr retorno = jaxbObjectFactory
@@ -395,7 +395,8 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		retorno.setTpProcRetPrinc(infoProcRetPrTO.getTipoProcessoRetencaoPrincipal());
 		retorno.setNrProcRetPrinc(infoProcRetPrTO.getNumeroProcessoRetencaoPrincipal());
 		retorno.setCodSuspPrinc(infoProcRetPrTO.getCodigoIndicativoSuspensaoPrincipal());
-		retorno.setValorPrinc(NumberUtil.formatarBigDecimalParaXML(infoProcRetPrTO.getValorRetencaoPrincipal()));
+		retorno.setValorPrinc(
+				NumberUtil.formatarBigDecimalParaXML(infoProcRetPrTO.getValorRetencaoPrincipal(), Boolean.TRUE));
 
 		return retorno;
 
@@ -410,14 +411,14 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 			final EventoTomadorServicoIdentificacaoPrestadorServicoTO identificacaoPrestadorServicoTO,
 			final IdePrestServ retorno, final ObjectFactory jaxbObjectFactory) {
 
-		final List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO> listaInfNaoRetencaoPrevidenciariaAdicionalTO = identificacaoPrestadorServicoTO
-				.getListaInformacaoNaoRetencaoPrevidenciariaAdicionalTO();
+		final List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO> listaInfNaoRetencaoPrevidenciariaAdicionalTO = identificacaoPrestadorServicoTO
+				.getListaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO();
 
 		if ((listaInfNaoRetencaoPrevidenciariaAdicionalTO != null)
 				&& (!listaInfNaoRetencaoPrevidenciariaAdicionalTO.isEmpty())) {
 
 			final List<InfoProcRetAd> listaInfoProcRetAd = retorno.getInfoProcRetAd();
-			for (final EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO infoProcRetAdTO : listaInfNaoRetencaoPrevidenciariaAdicionalTO) {
+			for (final EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO infoProcRetAdTO : listaInfNaoRetencaoPrevidenciariaAdicionalTO) {
 
 				final InfoProcRetAd infoProcRetAd = getInfoProcRetAd(infoProcRetAdTO, jaxbObjectFactory);
 				listaInfoProcRetAd.add(infoProcRetAd);
@@ -434,7 +435,7 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 	 * @return InfoProcRetAd
 	 */
 	private InfoProcRetAd getInfoProcRetAd(
-			final EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO infoProcRetAdTO,
+			final EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO infoProcRetAdTO,
 			final ObjectFactory jaxbObjectFactory) {
 
 		final InfoProcRetAd retorno = jaxbObjectFactory
@@ -447,7 +448,8 @@ public class JaxbEventoTomadorServicoUtil extends JaxbEventoTemplateUtil impleme
 		retorno.setTpProcRetAdic(infoProcRetAdTO.getTipoProcessoRetencaoAdicional());
 		retorno.setNrProcRetAdic(infoProcRetAdTO.getNumeroProcessoRetencaoAdicional());
 		retorno.setCodSuspAdic(infoProcRetAdTO.getCodigoIndicativoSuspensaoAdicional());
-		retorno.setValorAdic(NumberUtil.formatarBigDecimalParaXML(infoProcRetAdTO.getValorRetencaoAdicional()));
+		retorno.setValorAdic(
+				NumberUtil.formatarBigDecimalParaXML(infoProcRetAdTO.getValorRetencaoAdicional(), Boolean.TRUE));
 
 		return retorno;
 

@@ -12,6 +12,7 @@
 	</modules>
 
 	<properties>
+		<easymock.version>3.5</easymock.version>
 		<ejb.version>3.2</ejb.version>
 		<hibernate.core.version>5.2.10.Final</hibernate.core.version>
 		<hibernate.entityanager.version>5.2.10.Final</hibernate.entityanager.version>
@@ -27,7 +28,8 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.version>3.6.1</maven.compiler.version>
 		<maven.ear.version>2.10.1</maven.ear.version>
-		<maven.ejb.version>2.5.1</maven.ejb.version>		
+		<maven.ejb.version>2.5.1</maven.ejb.version>	
+		<mockito.version>1.10.19</mockito.version>			
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<reinf.batch.version>0.0.1</reinf.batch.version>

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  * @author José Vádinei Soares - vadinei@hotmail.com
  *
  */
-public class EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO implements Serializable {
+public class EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO implements Serializable {
 
 	private static final long serialVersionUID = -4408446997062673374L;
 
@@ -25,7 +25,7 @@ public class EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO 
 	 * @param codigoIndicativoSuspensaoAdicional
 	 * @param valorRetencaoAdicional
 	 */
-	public EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO(final Short tipoProcessoRetencaoAdicional,
+	public EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO(final Short tipoProcessoRetencaoAdicional,
 			final String numeroProcessoRetencaoAdicional, final Long codigoIndicativoSuspensaoAdicional,
 			final BigDecimal valorRetencaoAdicional) {
 		super();
@@ -99,7 +99,7 @@ public class EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO 
 	 * @return O atributo serialversionuid
 	 */
 	public static long getSerialversionuid() {
-		return EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO.serialVersionUID;
+		return EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO.serialVersionUID;
 	}
 
 	/*
@@ -136,7 +136,7 @@ public class EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO 
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO other = (EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO) obj;
+		final EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO other = (EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO) obj;
 		if (tipoProcessoRetencaoAdicional == null) {
 			if (other.tipoProcessoRetencaoAdicional != null) {
 				return false;

@@ -32,10 +32,10 @@ public class EventoTomadorServicoIdentificacaoPrestadorServicoTO implements Seri
 	private List<EventoTomadorServicoNotaFiscalServicoTO> listaNotaFiscalServicoTO;
 
 	// infoProcRetPr
-	private List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO> listaInformacaoNaoRetencaoPrevidenciariaTO;
+	private List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO> listaInformacaoProcessoNaoRetencaoPrevidenciariaTO;
 
 	// infoProcRetAd
-	private List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO> listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO;
+	private List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO> listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO;
 
 	/**
 	 * @param cnpjPrestador
@@ -203,36 +203,38 @@ public class EventoTomadorServicoIdentificacaoPrestadorServicoTO implements Seri
 	}
 
 	/**
-	 * @return O atributo listaInformacaoNaoRetencaoPrevidenciariaTO
+	 * @return O atributo listaInformacaoProcessoNaoRetencaoPrevidenciariaTO
 	 */
-	public List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO> getListaInformacaoNaoRetencaoPrevidenciariaTO() {
-		return listaInformacaoNaoRetencaoPrevidenciariaTO;
+	public List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO> getListaInformacaoProcessoNaoRetencaoPrevidenciariaTO() {
+		return listaInformacaoProcessoNaoRetencaoPrevidenciariaTO;
 	}
 
 	/**
-	 * @param listaInformacaoNaoRetencaoPrevidenciariaTO
-	 *            define o atributo listaInformacaoNaoRetencaoPrevidenciariaTO
-	 */
-	public void setListaInformacaoNaoRetencaoPrevidenciariaTO(
-			final List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaTO> listaInformacaoNaoRetencaoPrevidenciariaTO) {
-		this.listaInformacaoNaoRetencaoPrevidenciariaTO = listaInformacaoNaoRetencaoPrevidenciariaTO;
-	}
-
-	/**
-	 * @return O atributo listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO
-	 */
-	public List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO> getListaInformacaoNaoRetencaoPrevidenciariaAdicionalTO() {
-		return listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO;
-	}
-
-	/**
-	 * @param listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO
+	 * @param listaInformacaoProcessoNaoRetencaoPrevidenciariaTO
 	 *            define o atributo
-	 *            listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO
+	 *            listaInformacaoProcessoNaoRetencaoPrevidenciariaTO
 	 */
-	public void setListaInformacaoNaoRetencaoPrevidenciariaAdicionalTO(
-			final List<EventoTomadorServicoInformacaoNaoRetencaoPrevidenciariaAdicionalTO> listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO) {
-		this.listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO = listaInformacaoNaoRetencaoPrevidenciariaAdicionalTO;
+	public void setListaInformacaoProcessoNaoRetencaoPrevidenciariaTO(
+			final List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaTO> listaInformacaoProcessoNaoRetencaoPrevidenciariaTO) {
+		this.listaInformacaoProcessoNaoRetencaoPrevidenciariaTO = listaInformacaoProcessoNaoRetencaoPrevidenciariaTO;
+	}
+
+	/**
+	 * @return O atributo
+	 *         listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO
+	 */
+	public List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO> getListaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO() {
+		return listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO;
+	}
+
+	/**
+	 * @param listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO
+	 *            define o atributo
+	 *            listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO
+	 */
+	public void setListaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO(
+			final List<EventoTomadorServicoInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO> listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO) {
+		this.listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO = listaInformacaoProcessoNaoRetencaoPrevidenciariaAdicionalTO;
 	}
 
 	/**

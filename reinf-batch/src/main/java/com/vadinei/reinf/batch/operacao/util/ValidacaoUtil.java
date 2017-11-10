@@ -7,7 +7,7 @@ public final class ValidacaoUtil implements Serializable {
 
 	private static final long serialVersionUID = 548296059241830366L;
 
-	public static String excluirAcentos(final String str) {
+	public static synchronized String excluirAcentos(final String str) {
 		return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll(ConstanteUtil.P_ASCII,
 				ConstanteUtil.STRING_VAZIA);
 	}

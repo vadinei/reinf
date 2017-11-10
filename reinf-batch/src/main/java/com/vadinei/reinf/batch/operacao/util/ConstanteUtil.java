@@ -43,7 +43,7 @@ public class ConstanteUtil implements Serializable {
 
 	public static final String XMLDSIG_MORE_RSA_SHA256 = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
 
-	public static final double ZERO_DOUBLE = 0d;
+	public static final Double ZERO_DOUBLE = 0d;
 
 	private static final long serialVersionUID = -7090522224169475459L;
 

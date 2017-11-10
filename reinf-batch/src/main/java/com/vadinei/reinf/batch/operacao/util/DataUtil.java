@@ -1,6 +1,7 @@
 package com.vadinei.reinf.batch.operacao.util;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,11 +21,11 @@ public final class DataUtil implements Serializable {
 
 	private static final long serialVersionUID = 6635503413007868594L;
 
-	public static String formatar(final Date data, final String formato) {
+	public static synchronized String formatar(final Date data, final String formato) {
 		return new SimpleDateFormat(formato).format(data);
 	}
 
-	public static Date formatar(final String data, final String formato) {
+	public static synchronized Date formatar(final String data, final String formato) {
 		final SimpleDateFormat format = new SimpleDateFormat(formato);
 		Date dataRetorno = null;
 
@@ -36,7 +37,7 @@ public final class DataUtil implements Serializable {
 		return dataRetorno;
 	}
 
-	public static Date recuperarPrimeiroDiaDoAno(final Date date) {
+	public static synchronized Date recuperarPrimeiroDiaDoAno(final Date date) {
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.MONTH, calendar.getActualMinimum(Calendar.MONTH));
@@ -48,7 +49,7 @@ public final class DataUtil implements Serializable {
 		return calendar.getTime();
 	}
 
-	public static Date recuperarUltimoDia(final Date date) {
+	public static synchronized Date recuperarUltimoDia(final Date date) {
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
@@ -59,7 +60,7 @@ public final class DataUtil implements Serializable {
 		return calendar.getTime();
 	}
 
-	public static Date recuperarPrimeiroDia(final Date date) {
+	public static synchronized Date recuperarPrimeiroDia(final Date date) {
 		final Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
@@ -70,13 +71,22 @@ public final class DataUtil implements Serializable {
 		return calendar.getTime();
 	}
 
-	public static XMLGregorianCalendar converterDateParaXML(final Date date) {
+	public static synchronized XMLGregorianCalendar converterDateParaXML(final Date data) {
 		try {
 			final GregorianCalendar calendar = new GregorianCalendar();
-			calendar.setTime(date);
+			calendar.setTime(data);
 			return DatatypeFactory.newInstance().newXMLGregorianCalendarDate(calendar.get(Calendar.YEAR),
 					calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH),
 					DatatypeConstants.FIELD_UNDEFINED);
+		} catch (final DatatypeConfigurationException e) {
+			return null;
+		}
+	}
+
+	public static synchronized XMLGregorianCalendar converterDateParaXML(final Date data, final String format) {
+		try {
+			final DateFormat dateFormat = new SimpleDateFormat(format);
+			return DatatypeFactory.newInstance().newXMLGregorianCalendar(dateFormat.format(data));
 		} catch (final DatatypeConfigurationException e) {
 			return null;
 		}
